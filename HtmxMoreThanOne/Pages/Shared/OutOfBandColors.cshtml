@@ -1,0 +1,11 @@
+@model IndexModel
+
+<div id="red" hx-swap-oob="true">
+    @await Html.PartialAsync("Color", Color.Random(Color.Red))
+</div>
+<div id="green" hx-swap-oob="true">
+    @await Html.PartialAsync("Color", Color.Random(Color.Green))
+</div>
+<div id="blue" hx-swap-oob="true">
+    @await Html.PartialAsync("Color", Color.Random(Color.Blue))
+</div>

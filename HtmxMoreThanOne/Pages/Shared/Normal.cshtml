@@ -1,0 +1,11 @@
+@model IndexModel
+
+<div>
+    @await Html.PartialAsync("Color", Color.Random(Color.Red))
+</div>
+<div>
+    @await Html.PartialAsync("Color", Color.Random(Color.Green))
+</div>
+<div>
+    @await Html.PartialAsync("Color", Color.Random(Color.Blue))
+</div>

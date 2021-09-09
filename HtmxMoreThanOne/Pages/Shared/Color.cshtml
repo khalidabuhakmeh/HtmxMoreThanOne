@@ -1,0 +1,9 @@
+@model Color
+@{
+    System.Diagnostics.Debug.Assert(Model != null, nameof(Model) + " != null");
+}
+<div class="position-relative" style="width:10rem;height:10rem;background-color: rgb(@Model.R, @Model.G, @Model.B)">
+    <p class="fw-bold position-absolute top-50 start-50 translate-middle w-100 text-center">
+        rgb(@Model.R, @Model.G, @Model.B)
+    </p>
+</div>

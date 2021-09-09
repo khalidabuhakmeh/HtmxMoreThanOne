@@ -1,0 +1,76 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Home page";
+}
+
+<div class="text-center">
+    <h1 class="display-4">
+        <img src="~/img/wonka.jpg" alt="willy wonka" class="img-fluid w-25" />
+    </h1>
+</div>
+
+<div class="row mb-4">
+    <div class="col-12">
+        <h2>Normal</h2>
+        <hr/>
+        <div id="random" class="d-flex justify-content-between">
+            @await Html.PartialAsync("Shared/Normal")
+        </div>
+        <div class="mt-3">
+            <button hx-get
+                    hx-page="Index"
+                    hx-target="#random"
+                    class="btn btn-primary btn-lg w-100">
+                Random Colors
+            </button>
+        </div>
+    </div>
+</div>
+
+
+<div class="row mb-4">
+    <div class="col-12">
+        <h2>Out Of Band</h2>
+        <hr/>
+        <div class="d-flex justify-content-between">
+            @await Html.PartialAsync("Shared/OutOfBandColors")
+        </div>
+        <div class="mt-3">
+            <button hx-get
+                    hx-page="Index"
+                    hx-page-handler="OutOfBand"
+                    hx-target="#oblivion"
+                    class="btn btn-primary btn-lg w-100">
+                Random Colors
+            </button>
+        </div>
+        <div id="oblivion"></div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-12">
+        <h2>Trigger HTMX</h2>
+        <hr/>
+        <div class="d-flex justify-content-between">
+            <div hx-get hx-page="Index" hx-page-handler="Color" hx-route-color="red" hx-trigger="colors from:document">
+                @await Html.PartialAsync("Color", Color.Random(Color.Red))
+            </div>
+            <div hx-get hx-page="Index" hx-page-handler="Color" hx-route-color="green" hx-trigger="colors from:document">
+                @await Html.PartialAsync("Color", Color.Random(Color.Green))
+            </div>
+            <div hx-get hx-page="Index" hx-page-handler="Color" hx-route-color="blue" hx-trigger="colors from:document">
+                @await Html.PartialAsync("Color", Color.Random(Color.Blue))
+            </div>
+        </div>
+        <div class="mt-3">
+            <button
+                id="randomize"
+                _="on click trigger colors"
+                class="btn btn-primary btn-lg w-100">
+                Random Colors
+            </button>
+        </div>
+    </div>
+</div>
